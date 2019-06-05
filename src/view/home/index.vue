@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import HelloWorld from "../../components/HelloWorld.vue";
-import ComponentOne from "../../components/ComponentOne.vue";
+import HelloWorld from "@components/HelloWorld.vue";
+import ComponentOne from "@components/ComponentOne.vue";
 export default {
   name: "Home",
   components: {
