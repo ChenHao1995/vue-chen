@@ -8,6 +8,7 @@ Vue.use(ElementUI)
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/', redirect: '/home' },
   { path: '/home', component: () => import('./view/home/index.vue') },
   {
     path: '/table-chen',
