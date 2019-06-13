@@ -2,8 +2,18 @@
   <div id="app">
     <img alt="Vue logo" src="../../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <ComponentOne :title.sync="ComponentOneTitle" :content.sync="content" v-model="value"/>
-    {{value}}
+    <ComponentOne
+      :title.sync="ComponentOneTitle"
+      :content.sync="content"
+      v-model="value"
+      v-on:input="change"
+    />
+    {{value}}--{{radio}}
+    <div>
+      <input type="radio" name="q" value="0" id="radio1" v-model="radio">
+      <input type="radio" name="q" value="1" id="radio2" v-model="radio">
+    </div>
+    <input onchange="console.log('sdf')" oninput="console.log('input')">
   </div>
 </template>
 
@@ -17,12 +27,20 @@ export default {
     HelloWorld,
     ComponentOne
   },
-  methods: {},
+  methods: {
+    radioonchange: function(e) {
+      console.log(e);
+    },
+    change: function() {
+      console.log("yes");
+    }
+  },
   data: function() {
     return {
       ComponentOneTitle: "ComponentOne的Title",
       content: "这是内容",
-      value: "hahaha"
+      value: "hahaha",
+      radio: "1"
     };
   },
   created: function() {

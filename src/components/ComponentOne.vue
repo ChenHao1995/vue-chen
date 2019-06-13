@@ -4,13 +4,19 @@
     <input
       type="text"
       :value="value"
-      v-on:change="$emit('input',$event.target.value)"
+      v-on:change.passive="$emit('input',$event.target.value)"
     >
+    <input type="checkbox">
+    {{count}}
   </div>
 </template>
 <script>
 export default {
   name: "ComponentOne",
+  model: {
+    prop: "value",
+    event: "input"
+  },
   props: {
     title: String,
     content: String,
@@ -20,6 +26,16 @@ export default {
     return {
       sd: "123"
     };
+  },
+  computed: {
+    count() {
+      this.$store.dispatch("test/increment");
+      this.$store.dispatch("test/increment");
+      console.log(this.$store);
+
+      console.log(this.$store.getters["test/result"]);
+      return this.$store.getters["test/result"];
+    }
   },
   created: function() {
     this.$emit("update:title", "title更新了");
